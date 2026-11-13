@@ -4,28 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manang's Karenderia | Lutong Bahay sa Kanto</title>
+    <meta name="description" content="Freshly cooked daily Filipino lutong bahay, silog meals, sinigang, adobo, and merienda at Manang's Karenderia.">
+    <!-- Open Graph Meta Tags for Vercel / Social Previews -->
+    <meta property="og:title" content="Manang's Karenderia | Lutong Bahay sa Kanto">
+    <meta property="og:description" content="Mainit na sabaw at lutong bahay para sa lahat. Check out our daily menu and prices!">
+    <meta property="og:type" content="website">
+    <!-- Inline SVG Favicon so Vercel never logs a 404 for /favicon.ico -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23C85A32'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M6 12h12c0 3.314-2.686 6-6 6s-6-2.686-6-6z' fill='%23FAF6F0'/%3E%3C/svg%3E">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter & Fraunces for warm editorial aesthetic -->
+    <!-- Google Fonts: Fraunces (warm editorial serif) & Plus Jakarta Sans (clean readable UI) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Fraunces', 'serif'],
+                        serif: ['Fraunces', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
                     },
                     colors: {
                         cream: '#FAF6F0',
-                        sand: '#EFE6D8',
+                        sand: '#F2E9DC',
                         terracotta: '#C85A32',
-                        terracottaDark: '#A34321',
-                        bananaLeaf: '#2D4F3E',
-                        bananaLeafLight: '#3E6B54',
-                        charcoal: '#231F1E',
+                        terracottaDark: '#A34320',
+                        bananaleaf: '#3D5A3C',
+                        charcoal: '#26211D',
                     }
                 }
             }
@@ -34,575 +40,476 @@
 </head>
 <body class="bg-cream text-charcoal font-sans antialiased selection:bg-terracotta selection:text-white">
 
-    <!-- Navigation Bar -->
+    <!-- Top Announcement Bar -->
+    <div class="bg-bananaleaf text-cream text-xs sm:text-sm py-2.5 px-4 text-center font-medium tracking-wide">
+        <span>🔥 Bagong Luto! Fresh ulam served daily starting 6:00 AM • Libreng Sabaw sa Bawat Kain!</span>
+    </div>
+
+    <!-- Sticky Navigation -->
     <header class="sticky top-0 z-40 bg-cream/90 backdrop-blur-md border-b border-stone-200/80">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16 sm:h-20">
-                <!-- Brand Logo -->
-                <a href="#" class="flex items-center gap-3 group">
-                    <div class="w-10 h-10 rounded-2xl bg-terracotta text-white flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
-                        <!-- Palayok (Clay Pot) SVG Icon -->
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 11h16M6 11c0 4.418 2.686 8 6 8s6-3.582 6-8M8 7h8M10 4h4" />
-                        </svg>
-                    </div>
-                    <div>
-                        <span class="font-serif font-bold text-xl sm:text-2xl tracking-tight text-charcoal block leading-none">Manang's</span>
-                        <span class="text-xs uppercase tracking-widest text-terracotta font-semibold">Karenderia</span>
-                    </div>
-                </a>
-
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-700">
-                    <a href="#about" class="hover:text-terracotta transition-colors">Our Story</a>
-                    <a href="#menu" class="hover:text-terracotta transition-colors">Daily Ulam Menu</a>
-                    <a href="#visit" class="hover:text-terracotta transition-colors">Location & Hours</a>
-                    <a href="#menu" class="px-5 py-2.5 rounded-full bg-bananaLeaf text-white hover:bg-bananaLeafLight transition-colors shadow-sm">
-                        Tingnan ang Menu
-                    </a>
-                </nav>
-
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-3 rounded-xl text-charcoal hover:bg-sand transition-colors">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-terracotta text-white flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18M4 12a8 8 0 0016 0M7 19h10M9 6c0-1.5 1-2 1-3M12 6c0-1.5 1-2 1-3M15 6c0-1.5 1-2 1-3"/>
                     </svg>
-                </button>
-            </div>
-        </div>
+                </div>
+                <div>
+                    <span class="font-serif font-bold text-lg sm:text-xl tracking-tight text-charcoal block leading-none">Manang's Karenderia</span>
+                    <span class="text-[11px] uppercase tracking-widest text-terracotta font-semibold">Lutong Bahay • Est. 2012</span>
+                </div>
+            </a>
 
-        <!-- Mobile Dropdown Navigation -->
-        <div id="mobile-menu" class="hidden md:hidden bg-cream border-b border-stone-200 px-4 pt-2 pb-6 space-y-2">
-            <a href="#about" class="block px-4 py-3 rounded-xl text-base font-medium hover:bg-sand transition-colors">Our Story</a>
-            <a href="#menu" class="block px-4 py-3 rounded-xl text-base font-medium hover:bg-sand transition-colors">Daily Ulam Menu</a>
-            <a href="#visit" class="block px-4 py-3 rounded-xl text-base font-medium hover:bg-sand transition-colors">Location & Hours</a>
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-700">
+                <a href="#menu" class="hover:text-terracotta transition-colors">Daily Menu</a>
+                <a href="#story" class="hover:text-terracotta transition-colors">Our Story</a>
+                <a href="#visit" class="hover:text-terracotta transition-colors">Location & Hours</a>
+            </nav>
+
+            <!-- Tray Summary Button -->
+            <button id="open-tray-btn" class="flex items-center gap-2 bg-charcoal hover:bg-stone-800 text-cream px-4 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-sm">
+                <svg class="w-4 h-4 text-terracotta" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3z"/>
+                </svg>
+                <span>My Tray</span>
+                <span id="tray-count" class="bg-terracotta text-white text-xs px-2 py-0.5 rounded-full">0</span>
+            </button>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative overflow-hidden pt-10 pb-16 sm:pt-16 sm:pb-24">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-                <!-- Left Copy -->
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sand text-bananaLeaf text-xs sm:text-sm font-semibold tracking-wide">
-                        <span class="w-2 h-2 rounded-full bg-terracotta animate-pulse"></span>
-                        Bagong Luto Araw-Araw • Freshly Cooked Daily
-                    </div>
-                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-charcoal leading-[1.12]">
-                        Mainit na Sabaw at <span class="text-terracotta italic">Lutong Bahay</span> para sa Lahat.
-                    </h1>
-                    <p class="text-base sm:text-lg text-stone-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                        Welcome to <strong>Manang's Karenderia</strong>. From early morning silog breakfasts to hearty lunchtime adobo, sinigang, and merienda favorites—we serve honest, comforting Filipino meals made with Nanay's timeless recipes.
-                    </p>
-                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                        <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-terracotta hover:bg-terracottaDark text-white font-semibold text-base shadow-md hover:shadow-lg transition-all text-center">
-                            Explore Today's Ulam
-                        </a>
-                        <a href="#visit" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white hover:bg-sand text-charcoal border border-stone-200 font-semibold text-base transition-all text-center">
-                            Visit Our Kanto
-                        </a>
-                    </div>
-                    <!-- Quick Highlights -->
-                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-stone-200/80 max-w-lg mx-auto lg:mx-0">
-                        <div>
-                            <p class="font-serif text-2xl font-bold text-bananaLeaf">₱55+</p>
-                            <p class="text-xs text-stone-500 mt-0.5">Sulit Ulam Meals</p>
-                        </div>
-                        <div>
-                            <p class="font-serif text-2xl font-bold text-bananaLeaf">6:00 AM</p>
-                            <p class="text-xs text-stone-500 mt-0.5">First Kaldero Out</p>
-                        </div>
-                        <div>
-                            <p class="font-serif text-2xl font-bold text-bananaLeaf">100%</p>
-                            <p class="text-xs text-stone-500 mt-0.5">No Shortcuts</p>
-                        </div>
-                    </div>
+    <section class="relative overflow-hidden py-12 sm:py-20 lg:py-24 px-4 sm:px-6">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            <!-- Hero Text -->
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sand border border-stone-300/70 text-xs font-semibold text-stone-700">
+                    <span class="w-2 h-2 rounded-full bg-bananaleaf animate-pulse"></span>
+                    Open Today • 6:00 AM – 8:00 PM
+                </div>
+                <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-charcoal leading-[1.12]">
+                    Mainit na sabaw at <span class="text-terracotta italic">lutong bahay</span> para sa lahat.
+                </h1>
+                <p class="text-base sm:text-lg text-stone-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                    Welcome to <strong>Manang's Karenderia</strong>—your neighborhood kitchen serving honest, home-cooked Filipino comfort food made fresh every morning with zero shortcuts and generous servings.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
+                    <a href="#menu" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-terracotta hover:bg-terracottaDark text-white font-semibold text-sm sm:text-base shadow-md shadow-terracotta/20 transition-all text-center">
+                        Tingnan ang Menu (View Menu)
+                    </a>
+                    <a href="#visit" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-white hover:bg-sand text-charcoal border border-stone-300 font-semibold text-sm sm:text-base transition-all text-center">
+                        Find Our Kanto
+                    </a>
                 </div>
 
-                <!-- Right Feature Card -->
-                <div class="lg:col-span-5">
-                    <div class="relative bg-white p-4 sm:p-5 rounded-3xl shadow-xl border border-stone-100">
-                        <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-sand relative">
-                            <img 
-                                src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&w=900&q=80" 
-                                onerror="this.onerror=null;this.src='https://placehold.co/800x600/EFE6D8/231F1E?text=Manangs+Special+Kamayan';"
-                                alt="Traditional Filipino Feast at Manang's Karenderia" 
-                                class="w-full h-full object-cover"
-                            >
-                            <div class="absolute top-3 left-3 bg-white/95 backdrop-blur-sm px-3.5 py-1.5 rounded-full text-xs font-bold text-charcoal shadow-sm">
-                                ★ Bestseller ng Bayan
-                            </div>
-                        </div>
-                        <div class="mt-4 flex items-center justify-between px-1">
-                            <div>
-                                <h3 class="font-serif font-bold text-lg text-charcoal">Pork Sinigang sa Sampalok</h3>
-                                <p class="text-sm text-stone-500">Served piping hot with kangkong & labanos</p>
-                            </div>
-                            <span class="px-3.5 py-1.5 rounded-xl bg-sand text-terracotta font-bold text-base">
-                                ₱85
-                            </span>
-                        </div>
+                <!-- Trust Highlights -->
+                <div class="grid grid-cols-3 gap-4 pt-6 border-t border-stone-200/80 max-w-lg mx-auto lg:mx-0">
+                    <div>
+                        <p class="font-serif text-2xl font-bold text-charcoal">₱55+</p>
+                        <p class="text-xs text-stone-500">Sulit Ulam Meals</p>
+                    </div>
+                    <div>
+                        <p class="font-serif text-2xl font-bold text-charcoal">100%</p>
+                        <p class="text-xs text-stone-500">Fresh Palengke Picks</p>
+                    </div>
+                    <div>
+                        <p class="font-serif text-2xl font-bold text-charcoal">Free</p>
+                        <p class="text-xs text-stone-500">Hot Sabaw Refills</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Owner Story / About Section -->
-    <section id="about" class="py-16 sm:py-20 bg-sand/60 border-y border-stone-200/70">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm border border-stone-100 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-                <div class="md:col-span-4 flex flex-col items-center text-center">
-                    <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-sand shadow-md bg-cream">
-                        <img 
-                            src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?auto=format&fit=crop&w=500&q=80" 
-                            onerror="this.onerror=null;this.src='https://placehold.co/400x400/C85A32/FAF6F0?text=Manang+Lorna';"
-                            alt="Manang Lorna - Owner and Head Cook" 
-                            class="w-full h-full object-cover"
-                        >
+            <!-- Hero Visual Placeholder Card -->
+            <div class="lg:col-span-5">
+                <div class="relative rounded-3xl bg-sand p-4 sm:p-5 border border-stone-200/90 shadow-xl">
+                    <div class="aspect-[4/3] w-full rounded-2xl bg-stone-200/80 border-2 border-dashed border-stone-400/70 flex flex-col items-center justify-center p-6 text-center">
+                        <div class="w-14 h-14 rounded-2xl bg-cream text-stone-400 flex items-center justify-center mb-3 shadow-sm">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="3"/>
+                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 15l-5-5L5 21"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-stone-500">Photo Placeholder</span>
+                        <p class="text-sm font-medium text-stone-600 mt-1">Manang's Signature Kaldero Spread</p>
+                        <span class="text-xs text-stone-400 mt-1">800 × 600 px</span>
                     </div>
-                    <h3 class="font-serif font-bold text-xl mt-4 text-charcoal">Manang Lorna</h3>
-                    <p class="text-xs uppercase tracking-wider text-terracotta font-semibold mt-1">Founder & Head Cook</p>
-                </div>
-                <div class="md:col-span-8 space-y-4 text-center md:text-left">
-                    <span class="text-xs font-bold uppercase tracking-widest text-bananaLeaf">Ang Aming Kwento</span>
-                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-charcoal">
-                        "Kain na, anak! Bawal ang gutom dito sa Manang's."
-                    </h2>
-                    <p class="text-stone-600 leading-relaxed text-sm sm:text-base">
-                        What started in 2012 as two stainless kalderos on a wooden table outside our gate has grown into our neighborhood's favorite dining spot. Every morning at 4:00 AM, we visit the local palengke to pick the freshest pork, bangus, and gulay.
-                    </p>
-                    <p class="text-stone-600 leading-relaxed text-sm sm:text-base">
-                        Whether you're a student stretching your allowance, a commuter needing a quick almusal, or a family picking up hapunan, you'll always get generous servings, free sabaw, and a warm smile.
-                    </p>
+
+                    <!-- Floating Best-Seller Tag -->
+                    <div class="mt-4 bg-white rounded-2xl p-4 border border-stone-200/80 flex items-center justify-between gap-4">
+                        <div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-bananaleaf">Today's Best Seller</span>
+                            <h3 class="font-serif font-bold text-base text-charcoal">Pork Sinigang sa Sampalok</h3>
+                            <p class="text-xs text-stone-500">Asim-kilig broth with tender pork belly & kangkong</p>
+                        </div>
+                        <span class="font-serif font-bold text-lg text-terracotta shrink-0">₱85</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Menu Section -->
-    <section id="menu" class="py-16 sm:py-24">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Section Header -->
+    <section id="menu" class="py-14 sm:py-20 px-4 sm:px-6 bg-white border-y border-stone-200/80">
+        <div class="max-w-6xl mx-auto">
             <div class="text-center max-w-2xl mx-auto space-y-3 mb-10">
-                <span class="text-xs font-bold uppercase tracking-widest text-terracotta">Turo-Turo & Lutong Bahay</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-charcoal">Manang's Daily Menu</h2>
-                <p class="text-stone-600 text-sm sm:text-base">
-                    All main ulam orders are served a la carte. Add a cup of steamed white rice for <strong>₱15</strong> or garlic sinangag for <strong>₱20</strong>. Libreng sabaw upon request!
+                <span class="text-xs font-bold uppercase tracking-widest text-terracotta">Menu ng Araw</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-charcoal">Anong Ulam Natin Ngayon?</h2>
+                <p class="text-sm sm:text-base text-stone-600">
+                    All prices are in Philippine Pesos (₱). Tap <strong>+ Add to Tray</strong> to estimate your meal budget or copy your takeout order for SMS/Viber.
                 </p>
             </div>
 
             <!-- Category Filter Pills -->
-            <div id="category-filters" class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10">
-                <button data-category="all" class="filter-btn active px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-charcoal text-white shadow-sm">
+            <div id="category-filters" class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
+                <button data-category="all" class="filter-btn active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-charcoal text-white transition-all">
                     Lahat (All)
                 </button>
-                <button data-category="ulam" class="filter-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-white text-stone-700 hover:bg-sand border border-stone-200">
+                <button data-category="ulam" class="filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-cream text-stone-700 hover:bg-sand transition-all">
                     Ulam & Sabaw
                 </button>
-                <button data-category="silog" class="filter-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-white text-stone-700 hover:bg-sand border border-stone-200">
+                <button data-category="silog" class="filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-cream text-stone-700 hover:bg-sand transition-all">
                     All-Day Silog
                 </button>
-                <button data-category="gulay" class="filter-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-white text-stone-700 hover:bg-sand border border-stone-200">
-                    Gulay atbp.
+                <button data-category="gulay" class="filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-cream text-stone-700 hover:bg-sand transition-all">
+                    Gulay (Veggies)
                 </button>
-                <button data-category="merienda" class="filter-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-white text-stone-700 hover:bg-sand border border-stone-200">
-                    Merienda & Panghimagas
+                <button data-category="merienda" class="filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-cream text-stone-700 hover:bg-sand transition-all">
+                    Merienda
                 </button>
-                <button data-category="drinks" class="filter-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-white text-stone-700 hover:bg-sand border border-stone-200">
-                    Palamig & Extras
+                <button data-category="extras" class="filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-cream text-stone-700 hover:bg-sand transition-all">
+                    Kanin & Palamig
                 </button>
             </div>
 
-            <!-- Menu Grid (Populated via JS for smooth filtering & tray estimation) -->
-            <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Menu cards injected here -->
+            <!-- Menu Grid -->
+            <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+                <!-- Menu items injected cleanly via JS -->
             </div>
+        </div>
+    </section>
 
-            <!-- Interactive Sulit Meal Estimator Banner -->
-            <div class="mt-14 bg-bananaLeaf text-white rounded-3xl p-6 sm:p-8 shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
-                <div class="space-y-1 text-center md:text-left">
-                    <div class="flex items-center justify-center md:justify-start gap-2">
-                        <span class="px-2.5 py-0.5 rounded-full bg-white/20 text-xs font-semibold">Budget Planner</span>
-                        <span id="tray-count" class="text-xs text-emerald-200 font-medium">0 items selected</span>
+    <!-- About / Story Section -->
+    <section id="story" class="py-14 sm:py-20 px-4 sm:px-6 bg-cream">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <!-- Story Photo Placeholder -->
+            <div class="lg:col-span-5 order-2 lg:order-1">
+                <div class="rounded-3xl bg-sand p-4 border border-stone-200/90 shadow-md">
+                    <div class="aspect-square w-full rounded-2xl bg-stone-200/80 border-2 border-dashed border-stone-400/70 flex flex-col items-center justify-center p-6 text-center">
+                        <div class="w-12 h-12 rounded-2xl bg-cream text-stone-400 flex items-center justify-center mb-3">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="3"/>
+                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 15l-5-5L5 21"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-stone-500">Owner Portrait Placeholder</span>
+                        <p class="text-sm font-medium text-stone-600 mt-1">Manang Tessie in the Kitchen</p>
+                        <span class="text-xs text-stone-400 mt-1">600 × 600 px</span>
                     </div>
-                    <h3 class="font-serif text-2xl font-bold">Your Estimated Tray Total: <span id="tray-total" class="text-amber-300">₱0</span></h3>
-                    <p id="tray-summary" class="text-sm text-emerald-100/90">Tap "+ Add to Tray" on any dish above to compute your lunch budget before visiting!</p>
                 </div>
-                <div class="flex items-center gap-3 w-full md:w-auto justify-center">
-                    <button id="clear-tray-btn" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white text-sm font-semibold transition-colors">
-                        Reset Tray
-                    </button>
-                    <button id="copy-order-btn" class="px-6 py-3 rounded-xl bg-terracotta hover:bg-terracottaDark text-white text-sm font-semibold shadow-sm transition-colors">
-                        Copy Order List
-                    </button>
+            </div>
+
+            <!-- Story Narrative -->
+            <div class="lg:col-span-7 order-1 lg:order-2 space-y-5">
+                <span class="text-xs font-bold uppercase tracking-widest text-bananaleaf">Ang Kwento ni Manang</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-charcoal leading-tight">
+                    Started with two kalderos and a promise to feed the neighborhood well.
+                </h2>
+                <p class="text-stone-600 leading-relaxed">
+                    Back in 2012, Manang Tessie set up a humble wooden table outside our gate with just two pots—Chicken Adobo and Ginisang Monggo—for tricycle drivers, students, and office workers rushing through their morning commute.
+                </p>
+                <p class="text-stone-600 leading-relaxed">
+                    Today, <strong>Manang's Karenderia</strong> still wakes up at 3:30 AM to visit the wet market for fresh produce, slow-simmers every broth from scratch, and makes sure nobody leaves our counter hungry.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3">
+                    <div class="p-4 rounded-2xl bg-white border border-stone-200/80">
+                        <h3 class="font-serif font-bold text-base text-charcoal">Lutong Bahay Quality</h3>
+                        <p class="text-xs text-stone-500 mt-1">No MSG overload—just real garlic, onions, tomatoes, and patience.</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-white border border-stone-200/80">
+                        <h3 class="font-serif font-bold text-base text-charcoal">Tapat na Presyo</h3>
+                        <p class="text-xs text-stone-500 mt-1">Student- and worker-friendly pricing with half-order options available.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Location, Hours & Contact Section -->
-    <section id="visit" class="py-16 sm:py-20 bg-sand/70 border-t border-stone-200">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-                <!-- Store Info Card -->
-                <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-stone-100 flex flex-col justify-between space-y-8">
-                    <div class="space-y-4">
-                        <span class="text-xs font-bold uppercase tracking-widest text-terracotta">Bisitahin Kami</span>
-                        <h2 class="font-serif text-3xl font-bold text-charcoal">Drop by Manang's Karenderia</h2>
-                        <p class="text-stone-600 text-sm sm:text-base">
-                            Dine-in at our breezy shaded tables or bring your own baunan (food container) for eco-friendly takeout! We also accept bulk packed-lunch orders for barangay events and office meetings.
-                        </p>
+    <!-- Location, Hours & Static Takeout Note Section -->
+    <section id="visit" class="py-14 sm:py-20 px-4 sm:px-6 bg-sand/60 border-t border-stone-200/80">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <!-- Store Info -->
+            <div class="lg:col-span-5 space-y-6 bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-sm">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-terracotta">Bisitahin Kami</span>
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-charcoal mt-1">Store Hours & Location</h2>
+                </div>
+
+                <div class="space-y-4 text-sm text-stone-600">
+                    <div class="flex items-start gap-3">
+                        <span class="w-8 h-8 rounded-xl bg-cream flex items-center justify-center text-terracotta shrink-0 font-bold">📍</span>
+                        <div>
+                            <p class="font-semibold text-charcoal">Address</p>
+                            <p>#42 Sampaguita St. cor. Mabini Ave., Brgy. San Jose (Near the Tricycle Terminal)</p>
+                        </div>
                     </div>
-
-                    <div class="space-y-5">
-                        <!-- Address -->
-                        <div class="flex items-start gap-4">
-                            <div class="w-11 h-11 rounded-2xl bg-sand text-terracotta flex items-center justify-center shrink-0">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-charcoal text-sm">Address</h4>
-                                <p class="text-stone-600 text-sm mt-0.5">#42 Kalayaan Kanto, Brgy. San Jose, Metro Manila (Near the Tricycle Terminal)</p>
-                            </div>
+                    <div class="flex items-start gap-3">
+                        <span class="w-8 h-8 rounded-xl bg-cream flex items-center justify-center text-terracotta shrink-0 font-bold">⏰</span>
+                        <div>
+                            <p class="font-semibold text-charcoal">Opening Hours</p>
+                            <p>Monday – Saturday: 6:00 AM – 8:00 PM</p>
+                            <p class="text-xs text-stone-500">Closed on Sundays for family rest</p>
                         </div>
-
-                        <!-- Hours -->
-                        <div class="flex items-start gap-4">
-                            <div class="w-11 h-11 rounded-2xl bg-sand text-bananaLeaf flex items-center justify-center shrink-0">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-charcoal text-sm">Opening Hours</h4>
-                                <p class="text-stone-600 text-sm mt-0.5">Monday – Saturday: 6:00 AM – 8:00 PM</p>
-                                <p class="text-stone-500 text-xs mt-0.5">Sunday: 7:00 AM – 3:00 PM (Special Sunday Bulalo!)</p>
-                            </div>
-                        </div>
-
-                        <!-- Contact / GCash -->
-                        <div class="flex items-start gap-4">
-                            <div class="w-11 h-11 rounded-2xl bg-sand text-terracotta flex items-center justify-center shrink-0">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-charcoal text-sm">Text / Viber for Advance Orders</h4>
-                                <p class="text-stone-600 text-sm mt-0.5">0917-555-0194 • Cash & GCash Accepted</p>
-                            </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="w-8 h-8 rounded-xl bg-cream flex items-center justify-center text-terracotta shrink-0 font-bold">📱</span>
+                        <div>
+                            <p class="font-semibold text-charcoal">Text / Viber Advance Orders</p>
+                            <p>0917-555-0194 (GCash & Cash Accepted)</p>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Quick Reservation / Bulk Order Inquiry Form -->
-                <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-stone-100">
-                    <h3 class="font-serif text-2xl font-bold text-charcoal">Pa-Reserve ng Ulam o Bilao</h3>
-                    <p class="text-stone-500 text-sm mt-1 mb-6">Planning a family salu-salo or want us to set aside your favorite ulam before it sells out? Leave a note!</p>
-                    
-                    <form id="inquiry-form" class="space-y-4">
+            <!-- Static-Friendly Advance Reservation Note Generator -->
+            <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-sm">
+                <span class="text-xs font-bold uppercase tracking-widest text-bananaleaf">Pa-Reserve ng Ulam</span>
+                <h3 class="font-serif text-2xl font-bold text-charcoal mt-1">Quick Takeout / Reservation Note</h3>
+                <p class="text-sm text-stone-600 mt-1 mb-6">
+                    Want us to set aside your favorite ulam before it sells out? Fill this out to generate a ready-to-send SMS/Viber message.
+                </p>
+
+                <form id="inquiry-form" class="space-y-4">
+                    <div>
+                        <label for="customer-name" class="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1.5">Pangalan (Your Name)</label>
+                        <input type="text" id="customer-name" name="customerName" required placeholder="e.g. Kuya Jomar" class="w-full px-4 py-3 rounded-xl bg-cream border border-stone-200 focus:outline-none focus:border-terracotta text-sm">
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label for="customer-name" class="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1.5">Pangalan (Your Name)</label>
-                            <input type="text" id="customer-name" required placeholder="e.g. Kuya Jomar" class="w-full px-4 py-3 rounded-xl bg-cream border border-stone-200 focus:outline-none focus:border-terracotta text-sm">
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label for="pickup-time" class="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1.5">Pickup Time</label>
-                                <input type="text" id="pickup-time" required placeholder="e.g. 12:15 PM Today" class="w-full px-4 py-3 rounded-xl bg-cream border border-stone-200 focus:outline-none focus:border-terracotta text-sm">
-                            </div>
-                            <div>
-                                <label for="contact-num" class="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1.5">Mobile Number</label>
-                                <input type="tel" id="contact-num" required placeholder="09XX-XXX-XXXX" class="w-full px-4 py-3 rounded-xl bg-cream border border-stone-200 focus:outline-none focus:border-terracotta text-sm">
-                            </div>
+                            <label for="pickup-time" class="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1.5">Pickup Time</label>
+                            <input type="text" id="pickup-time" name="pickupTime" required placeholder="e.g. 12:15 PM Today" class="w-full px-4 py-3 rounded-xl bg-cream border border-stone-200 focus:outline-none focus:border-terracotta text-sm">
                         </div>
                         <div>
-                            <label for="order-notes" class="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1.5">Order Details</label>
-                            <textarea id="order-notes" rows="3" required placeholder="e.g. 2 Pork Adobo, 1 Pinakbet, 3 Extra Rice..." class="w-full px-4 py-3 rounded-xl bg-cream border border-stone-200 focus:outline-none focus:border-terracotta text-sm"></textarea>
+                            <label for="contact-num" class="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1.5">Mobile Number</label>
+                            <input type="tel" id="contact-num" name="contactNum" required placeholder="09XX-XXX-XXXX" class="w-full px-4 py-3 rounded-xl bg-cream border border-stone-200 focus:outline-none focus:border-terracotta text-sm">
                         </div>
-                        <button type="submit" class="w-full py-3.5 rounded-xl bg-charcoal hover:bg-stone-800 text-white font-semibold text-sm transition-colors shadow-sm">
-                            Send Note to Manang
-                        </button>
-                    </form>
-                </div>
+                    </div>
+                    <div>
+                        <label for="order-notes" class="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1.5">Order Details</label>
+                        <textarea id="order-notes" name="orderNotes" rows="3" required placeholder="e.g. 2 Pork Adobo, 1 Pinakbet, 3 Extra Rice..." class="w-full px-4 py-3 rounded-xl bg-cream border border-stone-200 focus:outline-none focus:border-terracotta text-sm"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-3.5 rounded-xl bg-charcoal hover:bg-stone-800 text-white font-semibold text-sm transition-colors shadow-sm">
+                        Copy Reservation Note for SMS / Viber
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-charcoal text-stone-400 py-10">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-            <div>
-                <span class="font-serif font-bold text-lg text-white">Manang's Karenderia</span>
-                <p class="text-xs mt-1">Serving warmth, rice, and classic Filipino flavors since 2012.</p>
-            </div>
-            <p class="text-xs">© 2026 Manang's Karenderia. Maraming salamat sa pagtangkilik!</p>
+    <footer class="bg-charcoal text-stone-400 py-10 px-4 sm:px-6 text-center text-sm">
+        <div class="max-w-6xl mx-auto space-y-2">
+            <p class="font-serif text-lg font-bold text-cream">Manang's Karenderia</p>
+            <p>Lutong Bahay sa Kanto • Kain na po!</p>
+            <p class="text-xs text-stone-500 pt-2">&copy; 2026 Manang's Karenderia. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Custom Toast Notification Box (Replaces alert()) -->
-    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
-        <div class="bg-charcoal text-white px-5 py-3.5 rounded-2xl shadow-xl border border-stone-700 flex items-center gap-3 max-w-sm">
-            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0"></span>
-            <p id="toast-message" class="text-sm font-medium"></p>
+    <!-- Slide-Over Meal Tray Drawer -->
+    <div id="tray-modal" class="fixed inset-0 z-50 hidden">
+        <div id="tray-backdrop" class="absolute inset-0 bg-black/50 backdrop-blur-xs"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-cream shadow-2xl flex flex-col justify-between p-6">
+            <div>
+                <div class="flex items-center justify-between pb-4 border-b border-stone-200">
+                    <div>
+                        <h3 class="font-serif text-xl font-bold text-charcoal">My Meal Tray</h3>
+                        <p class="text-xs text-stone-500">Estimate your total & copy list to order</p>
+                    </div>
+                    <button id="close-tray-btn" class="p-2 rounded-xl bg-white border border-stone-200 text-stone-600 hover:text-charcoal">
+                        ✕
+                    </button>
+                </div>
+
+                <div id="tray-items" class="mt-4 space-y-3 max-h-[55vh] overflow-y-auto pr-1">
+                    <!-- Tray items rendered here -->
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-stone-200 space-y-3">
+                <div class="flex items-center justify-between text-base font-bold text-charcoal">
+                    <span>Estimated Total:</span>
+                    <span id="tray-total" class="font-serif text-xl text-terracotta">₱0</span>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <button id="clear-tray-btn" class="py-3 rounded-xl bg-white border border-stone-300 text-xs font-semibold text-stone-700 hover:bg-stone-100">
+                        Clear Tray
+                    </button>
+                    <button id="copy-order-btn" class="py-3 rounded-xl bg-terracotta hover:bg-terracottaDark text-white text-xs font-semibold shadow-sm">
+                        Copy Order List
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 hidden bg-charcoal text-cream text-xs sm:text-sm font-medium px-5 py-3 rounded-2xl shadow-lg border border-stone-700">
+        Notification message
+    </div>
+
     <script>
-        // Placeholder Filipino Menu Data for Manang's Karenderia
+        // Placeholder Filipino Karenderia Menu Data
         const menuItems = [
-            {
-                id: 1,
-                name: "Pork Adobo sa Gata",
-                category: "ulam",
-                price: 75,
-                tag: "House Specialty",
-                description: "Tender pork belly braised in vinegar, soy sauce, garlic, peppercorns, and rich coconut cream."
-            },
-            {
-                id: 2,
-                name: "Pork Sinigang sa Sampalok",
-                category: "ulam",
-                price: 85,
-                tag: "Bestseller",
-                description: "Sour tamarind broth loaded with pork ribs, kangkong, sitaw, radish, and green chili."
-            },
-            {
-                id: 3,
-                name: "Beef Kare-Kare",
-                category: "ulam",
-                price: 95,
-                tag: "Served w/ Bagoong",
-                description: "Slow-simmered beef tripe and chuck in roasted peanut sauce with pechay and eggplant."
-            },
-            {
-                id: 4,
-                name: "Chicken Tinola",
-                category: "ulam",
-                price: 70,
-                tag: "Mainit na Sabaw",
-                description: "Ginger-infused chicken soup with green papaya wedges and fresh malunggay leaves."
-            },
-            {
-                id: 5,
-                name: "Bicol Express",
-                category: "ulam",
-                price: 75,
-                tag: "Spicy",
-                description: "Creamy coconut milk stew with diced pork, shrimp paste (alamang), and finger chilies."
-            },
-            {
-                id: 6,
-                name: "Menudo ni Manang",
-                category: "ulam",
-                price: 70,
-                tag: "Classic",
-                description: "Diced pork and liver simmered in savory tomato sauce with potatoes, carrots, and raisins."
-            },
-            {
-                id: 7,
-                name: "Tapsilog",
-                category: "silog",
-                price: 85,
-                tag: "All-Day Breakfast",
-                description: "Sweet-savory marinated beef tapa, garlic fried rice, sunny-side-up egg, and atchara."
-            },
-            {
-                id: 8,
-                name: "Bangsilog",
-                category: "silog",
-                price: 85,
-                tag: "Crispy Favorite",
-                description: "Golden fried marinated boneless bangus served with sinangag, fried egg, and spiced vinegar."
-            },
-            {
-                id: 9,
-                name: "Longsilog",
-                category: "silog",
-                price: 75,
-                tag: "Sulit Meal",
-                description: "Three sweet skinless pork longganisa links, garlic rice, egg, and fresh sliced tomatoes."
-            },
-            {
-                id: 10,
-                name: "Pinakbet Tagalog",
-                category: "gulay",
-                price: 55,
-                tag: "Fresh Gulay",
-                description: "Kalabasa, sitaw, okra, talong, and ampalaya sautéed in savory shrimp paste with crispy bagnet bits."
-            },
-            {
-                id: 11,
-                name: "Ginisang Monggo",
-                category: "gulay",
-                price: 50,
-                tag: "Friday Special",
-                description: "Hearty mung bean stew topped with crushed chicharon, tinapa flakes, and bitter melon leaves."
-            },
-            {
-                id: 12,
-                name: "Laing sa Gata",
-                category: "gulay",
-                price: 60,
-                tag: "Rich & Creamy",
-                description: "Dried taro leaves slow-cooked in thick coconut milk, lemongrass, and labuyo chili."
-            },
-            {
-                id: 13,
-                name: "Pancit Bihon Guisado",
-                category: "merienda",
-                price: 50,
-                tag: "Merienda",
-                description: "Stir-fried rice noodles tossed with shredded chicken, cabbage, carrots, and calamansi on the side."
-            },
-            {
-                id: 14,
-                name: "Lumpiang Shanghai (5 pcs)",
-                category: "merienda",
-                price: 45,
-                tag: "Crispy",
-                description: "Crispy golden spring rolls filled with seasoned ground pork and carrots, with sweet-sour dip."
-            },
-            {
-                id: 15,
-                name: "Turon w/ Langka (2 pcs)",
-                category: "merienda",
-                price: 35,
-                tag: "Panghimagas",
-                description: "Caramelized saba banana and sweet jackfruit wrapped in crispy lumpia wrapper."
-            },
-            {
-                id: 16,
-                name: "Sago't Gulaman",
-                category: "drinks",
-                price: 25,
-                tag: "Palamig",
-                description: "Ice-cold arnibal brown sugar refresher loaded with chewy tapioca pearls and black jelly."
-            },
-            {
-                id: 17,
-                name: "Plain Steamed Rice",
-                category: "drinks",
-                price: 15,
-                tag: "Kanin",
-                description: "One generous cup of newly steamed fluffy white rice."
-            },
-            {
-                id: 18,
-                name: "Garlic Sinangag",
-                category: "drinks",
-                price: 20,
-                tag: "Kanin",
-                description: "Wok-fried rice toasted with golden crispy garlic bits."
-            }
+            // Ulam & Sabaw
+            { id: 1, name: "Pork Adobo sa Gata", category: "ulam", price: 75, tag: "Best Seller", desc: "Tender pork belly braised in soy sauce, vinegar, garlic, and rich coconut milk." },
+            { id: 2, name: "Pork Sinigang sa Sampalok", category: "ulam", price: 85, tag: "Mainit na Sabaw", desc: "Sour tamarind soup loaded with pork ribs, kangkong, radish, and sitaw." },
+            { id: 3, name: "Beef Caldereta", category: "ulam", price: 95, tag: "House Special", desc: "Slow-cooked beef chunks in savory tomato-liver sauce with potatoes and bell peppers." },
+            { id: 4, name: "Bicol Express", category: "ulam", price: 75, tag: "Maanghang", desc: "Creamy coconut chili stew with pork strips, shrimp paste (alamang), and siling haba." },
+            { id: 5, name: "Chicken Tinola", category: "ulam", price: 70, tag: "Comfort Soup", desc: "Ginger-infused chicken broth with green papaya wedges and fresh malunggay leaves." },
+            { id: 6, name: "Pork Menudo", category: "ulam", price: 70, tag: "Classic", desc: "Diced pork, liver, potatoes, carrots, and hotdog simmered in sweet tomato sauce." },
+
+            // All-Day Silog
+            { id: 7, name: "Tapsilog", category: "silog", price: 85, tag: "All-Day Favorite", desc: "Sweet-savory cured beef tapa served with garlic sinangag and sunny-side-up egg." },
+            { id: 8, name: "Tocilog", category: "silog", price: 75, tag: "Sweet & Crispy", desc: "Caramelized Pampanga-style pork tocino with sinangag, fried egg, and spiced vinegar." },
+            { id: 9, name: "Longsilog", category: "silog", price: 70, tag: "Sulit Meal", desc: "Two garlicky native longganisa links with sinangag, fried egg, and atchara." },
+            { id: 10, name: "Bangsilog", category: "silog", price: 85, tag: "Crispy", desc: "Marinated boneless milkfish (daing na bangus) with garlic rice and fried egg." },
+
+            // Gulay
+            { id: 11, name: "Pinakbet Tagalog", category: "gulay", price: 55, tag: "Fresh Gulay", desc: "Squash, okra, bitter melon, eggplant, and string beans sautéed in bagoong." },
+            { id: 12, name: "Ginisang Monggo", category: "gulay", price: 50, tag: "Friday Classic", desc: "Hearty mung bean stew topped with crispy chicharon bits and malunggay." },
+            { id: 13, name: "Laing", category: "gulay", price: 60, tag: "Creamy", desc: "Dried taro leaves simmered slowly in thick coconut milk, ginger, and chilies." },
+
+            // Merienda
+            { id: 14, name: "Pancit Bihon Guisado", category: "merienda", price: 50, tag: "Merienda", desc: "Stir-fried rice noodles with shredded chicken, cabbage, carrots, and calamansi." },
+            { id: 15, name: "Lumpiang Shanghai (6 pcs)", category: "merienda", price: 55, tag: "Crispy", desc: "Golden-fried seasoned ground pork spring rolls served with sweet chili dip." },
+            { id: 16, name: "Turon Saba (2 pcs)", category: "merienda", price: 35, tag: "Panghimagas", desc: "Caramelized brown-sugar banana rolls wrapped in crispy lumpia wrapper." },
+
+            // Kanin & Palamig
+            { id: 17, name: "Steamed White Rice (1 Cup)", category: "extras", price: 15, tag: "Unli-Sabaw", desc: "Fluffy, freshly steamed jasmine rice. Comes with complimentary hot sabaw." },
+            { id: 18, name: "Sago't Gulaman", category: "extras", price: 25, tag: "Palamig", desc: "Ice-cold arnibal brown sugar refresher with chewy tapioca pearls and gelatin." }
         ];
 
-        // State for Tray Estimator
         let tray = [];
-        let currentCategory = 'all';
 
-        // DOM Elements
         const menuGrid = document.getElementById('menu-grid');
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const trayTotalEl = document.getElementById('tray-total');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const trayModal = document.getElementById('tray-modal');
+        const trayItemsContainer = document.getElementById('tray-items');
         const trayCountEl = document.getElementById('tray-count');
-        const traySummaryEl = document.getElementById('tray-summary');
-        const clearTrayBtn = document.getElementById('clear-tray-btn');
-        const copyOrderBtn = document.getElementById('copy-order-btn');
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const inquiryForm = document.getElementById('inquiry-form');
+        const trayTotalEl = document.getElementById('tray-total');
+        const toastEl = document.getElementById('toast');
 
-        // Custom Toast Helper
-        let toastTimeout;
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toast-message');
-            toastMsg.textContent = message;
-            toast.classList.remove('translate-y-24', 'opacity-0');
-            clearTimeout(toastTimeout);
-            toastTimeout = setTimeout(() => {
-                toast.classList.add('translate-y-24', 'opacity-0');
-            }, 3000);
-        }
-
-        // Render Menu Cards
+        // Render Menu Cards with Clean Image Placeholders
         function renderMenu(category = 'all') {
-            const filtered = category === 'all' 
-                ? menuItems 
+            const filtered = category === 'all'
+                ? menuItems
                 : menuItems.filter(item => item.category === category);
 
             menuGrid.innerHTML = filtered.map(item => `
-                <div class="bg-white rounded-3xl p-6 border border-stone-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+                <article class="bg-cream/60 hover:bg-cream rounded-2xl p-4 sm:p-5 border border-stone-200/90 flex flex-col justify-between transition-all hover:shadow-md">
                     <div>
-                        <div class="flex items-start justify-between gap-3 mb-3">
-                            <span class="inline-block px-3 py-1 rounded-full bg-sand text-bananaLeaf text-xs font-semibold">
-                                ${item.tag}
-                            </span>
-                            <span class="font-serif text-xl font-bold text-terracotta">
-                                ₱${item.price}
-                            </span>
+                        <!-- Dish Photo Placeholder -->
+                        <div class="w-full h-36 rounded-xl bg-sand/80 border border-dashed border-stone-300 flex flex-col items-center justify-center mb-4 text-stone-400">
+                            <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="3"/>
+                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 15l-5-5L5 21"/>
+                            </svg>
+                            <span class="text-[11px] font-medium tracking-wide uppercase">Dish Photo Placeholder</span>
                         </div>
-                        <h3 class="font-serif text-xl font-bold text-charcoal group-hover:text-terracotta transition-colors">
-                            ${item.name}
-                        </h3>
-                        <p class="text-sm text-stone-600 mt-2 leading-relaxed">
-                            ${item.description}
-                        </p>
+
+                        <div class="flex items-start justify-between gap-3">
+                            <div>
+                                <span class="inline-block text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-sand text-stone-700 mb-1.5">
+                                    ${item.tag}
+                                </span>
+                                <h3 class="font-serif font-bold text-lg text-charcoal leading-snug">${item.name}</h3>
+                            </div>
+                            <span class="font-serif font-bold text-lg text-terracotta shrink-0">₱${item.price}</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-stone-600 mt-2 leading-relaxed">${item.desc}</p>
                     </div>
-                    <div class="pt-5 mt-5 border-t border-stone-100 flex items-center justify-between">
-                        <span class="text-xs text-stone-400 font-medium">Available Today</span>
-                        <button 
-                            onclick="addToTray(${item.id})"
-                            class="px-4 py-2 rounded-xl bg-cream hover:bg-terracotta text-charcoal hover:text-white border border-stone-200 hover:border-terracotta text-xs font-bold transition-all active:scale-95">
+
+                    <div class="mt-5 pt-3 border-t border-stone-200/70 flex items-center justify-between">
+                        <span class="text-[11px] text-stone-400 capitalize">${item.category}</span>
+                        <button onclick="addToTray(${item.id})" class="px-3.5 py-2 rounded-xl bg-white hover:bg-terracotta hover:text-white text-charcoal border border-stone-200 text-xs font-semibold transition-colors shadow-2xs">
                             + Add to Tray
                         </button>
                     </div>
+                </article>
+            `).join('');
+        }
+
+        // Category Filter Logic
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-charcoal', 'text-white');
+                    b.classList.add('bg-cream', 'text-stone-700');
+                });
+                btn.classList.remove('bg-cream', 'text-stone-700');
+                btn.classList.add('bg-charcoal', 'text-white');
+                renderMenu(btn.dataset.category);
+            });
+        });
+
+        // Tray Functions
+        window.addToTray = function(id) {
+            const dish = menuItems.find(m => m.id === id);
+            if (!dish) return;
+            tray.push(dish);
+            updateTrayUI();
+            showToast(`Added ${dish.name} (₱${dish.price}) to your tray!`);
+        };
+
+        window.removeFromTray = function(index) {
+            tray.splice(index, 1);
+            updateTrayUI();
+        };
+
+        function updateTrayUI() {
+            trayCountEl.textContent = tray.length;
+            const total = tray.reduce((sum, item) => sum + item.price, 0);
+            trayTotalEl.textContent = `₱${total}`;
+
+            if (tray.length === 0) {
+                trayItemsContainer.innerHTML = `
+                    <div class="text-center py-12 text-stone-400 text-sm">
+                        Wala pang laman ang tray mo.<br>Tap "+ Add to Tray" on any dish!
+                    </div>
+                `;
+                return;
+            }
+
+            trayItemsContainer.innerHTML = tray.map((item, idx) => `
+                <div class="flex items-center justify-between bg-white p-3 rounded-xl border border-stone-200/80">
+                    <div>
+                        <p class="text-sm font-semibold text-charcoal">${item.name}</p>
+                        <p class="text-xs text-terracotta font-bold">₱${item.price}</p>
+                    </div>
+                    <button onclick="removeFromTray(${idx})" class="text-xs text-stone-400 hover:text-red-600 px-2 py-1">
+                        Remove
+                    </button>
                 </div>
             `).join('');
         }
 
-        // Add Item to Budget Tray
-        window.addToTray = function(id) {
-            const item = menuItems.find(m => m.id === id);
-            if (!item) return;
-            tray.push(item);
+        // Drawer Open/Close
+        document.getElementById('open-tray-btn').addEventListener('click', () => {
             updateTrayUI();
-            showToast(`Added ${item.name} (₱${item.price}) to your tray!`);
-        };
+            trayModal.classList.remove('hidden');
+        });
+        document.getElementById('close-tray-btn').addEventListener('click', () => trayModal.classList.add('hidden'));
+        document.getElementById('tray-backdrop').addEventListener('click', () => trayModal.classList.add('hidden'));
 
-        // Update Tray Totals
-        function updateTrayUI() {
-            const total = tray.reduce((sum, item) => sum + item.price, 0);
-            trayTotalEl.textContent = `₱${total}`;
-            trayCountEl.textContent = `${tray.length} ${tray.length === 1 ? 'item' : 'items'} selected`;
-
-            if (tray.length === 0) {
-                traySummaryEl.textContent = 'Tap "+ Add to Tray" on any dish above to compute your lunch budget before visiting!';
-            } else {
-                // Group duplicate items for clean summary
-                const counts = {};
-                tray.forEach(i => { counts[i.name] = (counts[i.name] || 0) + 1; });
-                const summaryText = Object.entries(counts)
-                    .map(([name, qty]) => `${qty}x ${name}`)
-                    .join(', ');
-                traySummaryEl.textContent = summaryText;
-            }
-        }
-
-        // Reset Tray
-        clearTrayBtn.addEventListener('click', () => {
+        document.getElementById('clear-tray-btn').addEventListener('click', () => {
             tray = [];
             updateTrayUI();
-            showToast('Tray cleared!');
         });
 
-        // Copy Order List using execCommand for iframe compatibility
-        copyOrderBtn.addEventListener('click', () => {
+        // Copy Order List (Supports both HTTPS Vercel deployments and sandboxed previews)
+        document.getElementById('copy-order-btn').addEventListener('click', () => {
             if (tray.length === 0) {
                 showToast('Your tray is empty! Add some ulam first.');
                 return;
@@ -613,53 +520,52 @@
             const lines = Object.entries(counts).map(([name, qty]) => `- ${qty}x ${name}`);
             const textToCopy = `Manang's Karenderia Order:\n${lines.join('\n')}\nEstimated Total: ₱${total}`;
 
+            copyTextSafely(textToCopy, 'Order list copied! Ready to paste in SMS or Viber.');
+        });
+
+        function copyTextSafely(text, successMsg) {
             const tempTextarea = document.createElement('textarea');
-            tempTextarea.value = textToCopy;
+            tempTextarea.value = text;
+            tempTextarea.style.position = 'fixed';
+            tempTextarea.style.opacity = '0';
             document.body.appendChild(tempTextarea);
             tempTextarea.select();
             try {
                 document.execCommand('copy');
-                showToast('Order list copied! Ready to paste in SMS or Viber.');
+                showToast(successMsg);
             } catch (err) {
-                showToast('Could not copy order list.');
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(text)
+                        .then(() => showToast(successMsg))
+                        .catch(() => showToast('Could not copy text.'));
+                } else {
+                    showToast('Could not copy text.');
+                }
             }
             document.body.removeChild(tempTextarea);
-        });
+        }
 
-        // Category Filter Click Handlers
-        filterButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterButtons.forEach(b => {
-                    b.classList.remove('bg-charcoal', 'text-white', 'shadow-sm');
-                    b.classList.add('bg-white', 'text-stone-700', 'border', 'border-stone-200');
-                });
-                btn.classList.remove('bg-white', 'text-stone-700', 'border', 'border-stone-200');
-                btn.classList.add('bg-charcoal', 'text-white', 'shadow-sm');
-
-                currentCategory = btn.getAttribute('data-category');
-                renderMenu(currentCategory);
-            });
-        });
-
-        // Mobile Navigation Toggle
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu when clicking a link
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // Inquiry Form Submission
-        inquiryForm.addEventListener('submit', (e) => {
+        // Static-friendly Reservation Form Submission
+        document.getElementById('inquiry-form').addEventListener('submit', (e) => {
             e.preventDefault();
-            const name = document.getElementById('customer-name').value;
-            showToast(`Salamat, ${name}! Manang Lorna received your note.`);
-            inquiryForm.reset();
+            const name = document.getElementById('customer-name').value.trim();
+            const pickup = document.getElementById('pickup-time').value.trim();
+            const phone = document.getElementById('contact-num').value.trim();
+            const notes = document.getElementById('order-notes').value.trim();
+
+            const formattedNote = `Manang's Karenderia Reservation:\nName: ${name}\nPickup: ${pickup}\nContact: ${phone}\nOrder: ${notes}`;
+            copyTextSafely(formattedNote, `Salamat, ${name}! Reservation note copied—paste it via SMS/Viber to 0917-555-0194.`);
+            e.target.reset();
         });
+
+        // Toast Helper
+        let toastTimer;
+        function showToast(msg) {
+            toastEl.textContent = msg;
+            toastEl.classList.remove('hidden');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toastEl.classList.add('hidden'), 3200);
+        }
 
         // Initial Render
         renderMenu('all');
