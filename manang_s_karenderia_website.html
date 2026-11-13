@@ -268,41 +268,41 @@
                             <p class="font-semibold text-charcoal">Text / Viber Advance Orders</p>
                             <p>0917-555-0194 (GCash & Cash Accepted)</p>
                         </div>
+    <!-- Location & Hours Section -->
+    <section id="visit" class="py-14 sm:py-20 px-4 sm:px-6 bg-sand/60 border-t border-stone-200/80">
+        <div class="max-w-3xl mx-auto">
+            <!-- Store Info -->
+            <div class="space-y-6 bg-white p-6 sm:p-10 rounded-3xl border border-stone-200/80 shadow-sm">
+                <div class="text-center sm:text-left">
+                    <span class="text-xs font-bold uppercase tracking-widest text-terracotta">Bisitahin Kami</span>
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-charcoal mt-1">Store Hours & Location</h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm text-stone-600 pt-2">
+                    <div class="flex items-start gap-3">
+                        <span class="w-9 h-9 rounded-xl bg-cream flex items-center justify-center text-terracotta shrink-0 font-bold">📍</span>
+                        <div>
+                            <p class="font-semibold text-charcoal">Address</p>
+                            <p class="mt-0.5">#42 Sampaguita St. cor. Mabini Ave., Brgy. San Jose (Near the Tricycle Terminal)</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="w-9 h-9 rounded-xl bg-cream flex items-center justify-center text-terracotta shrink-0 font-bold">⏰</span>
+                        <div>
+                            <p class="font-semibold text-charcoal">Opening Hours</p>
+                            <p class="mt-0.5">Monday – Saturday: 6:00 AM – 8:00 PM</p>
+                            <p class="text-xs text-stone-500 mt-0.5">Closed on Sundays for family rest</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="w-9 h-9 rounded-xl bg-cream flex items-center justify-center text-terracotta shrink-0 font-bold">📱</span>
+                        <div>
+                            <p class="font-semibold text-charcoal">Contact & Payment</p>
+                            <p class="mt-0.5">0917-555-0194</p>
+                            <p class="text-xs text-stone-500 mt-0.5">Cash & GCash Accepted</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Static-Friendly Advance Reservation Note Generator -->
-            <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-sm">
-                <span class="text-xs font-bold uppercase tracking-widest text-bananaleaf">Pa-Reserve ng Ulam</span>
-                <h3 class="font-serif text-2xl font-bold text-charcoal mt-1">Quick Takeout / Reservation Note</h3>
-                <p class="text-sm text-stone-600 mt-1 mb-6">
-                    Want us to set aside your favorite ulam before it sells out? Fill this out to generate a ready-to-send SMS/Viber message.
-                </p>
-
-                <form id="inquiry-form" class="space-y-4">
-                    <div>
-                        <label for="customer-name" class="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1.5">Pangalan (Your Name)</label>
-                        <input type="text" id="customer-name" name="customerName" required placeholder="e.g. Kuya Jomar" class="w-full px-4 py-3 rounded-xl bg-cream border border-stone-200 focus:outline-none focus:border-terracotta text-sm">
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label for="pickup-time" class="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1.5">Pickup Time</label>
-                            <input type="text" id="pickup-time" name="pickupTime" required placeholder="e.g. 12:15 PM Today" class="w-full px-4 py-3 rounded-xl bg-cream border border-stone-200 focus:outline-none focus:border-terracotta text-sm">
-                        </div>
-                        <div>
-                            <label for="contact-num" class="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1.5">Mobile Number</label>
-                            <input type="tel" id="contact-num" name="contactNum" required placeholder="09XX-XXX-XXXX" class="w-full px-4 py-3 rounded-xl bg-cream border border-stone-200 focus:outline-none focus:border-terracotta text-sm">
-                        </div>
-                    </div>
-                    <div>
-                        <label for="order-notes" class="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1.5">Order Details</label>
-                        <textarea id="order-notes" name="orderNotes" rows="3" required placeholder="e.g. 2 Pork Adobo, 1 Pinakbet, 3 Extra Rice..." class="w-full px-4 py-3 rounded-xl bg-cream border border-stone-200 focus:outline-none focus:border-terracotta text-sm"></textarea>
-                    </div>
-                    <button type="submit" class="w-full py-3.5 rounded-xl bg-charcoal hover:bg-stone-800 text-white font-semibold text-sm transition-colors shadow-sm">
-                        Copy Reservation Note for SMS / Viber
-                    </button>
-                </form>
             </div>
         </div>
     </section>
@@ -544,19 +544,6 @@
             }
             document.body.removeChild(tempTextarea);
         }
-
-        // Static-friendly Reservation Form Submission
-        document.getElementById('inquiry-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('customer-name').value.trim();
-            const pickup = document.getElementById('pickup-time').value.trim();
-            const phone = document.getElementById('contact-num').value.trim();
-            const notes = document.getElementById('order-notes').value.trim();
-
-            const formattedNote = `Manang's Karenderia Reservation:\nName: ${name}\nPickup: ${pickup}\nContact: ${phone}\nOrder: ${notes}`;
-            copyTextSafely(formattedNote, `Salamat, ${name}! Reservation note copied—paste it via SMS/Viber to 0917-555-0194.`);
-            e.target.reset();
-        });
 
         // Toast Helper
         let toastTimer;
